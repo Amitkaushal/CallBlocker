@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ui.yogeshblogspot"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="7" />
+<uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/><!-- Permission for Processing outgoing call -->
+ <uses-permission android:name="android.permission.RECEIVE_SMS"/> 
+     <uses-permission android:name="android.permission.SEND_SMS"/> 
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <!-- This receiver automatically invoked when new outgoing call initiated(Look at <action/> tag inside intent filter)  -->
+       <receiver android:name=".CustomOutGoingCallListener">
+           <intent-filter android:priority="0"><!--Always  Specifies Lowest Priorities -->
+               <action android:name="android.intent.action.NEW_OUTGOING_CALL"/><!-- Intent for new outgoing call -->
+           <action android:name="android.provider.Telephony.SMS_RECEIVED" />  
+           <action android:name="android.provider.Telephony." />  
+           </intent-filter>
+           
+       </receiver>
+    </application>
+
+</manifest>
